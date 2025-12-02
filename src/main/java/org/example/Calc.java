@@ -10,13 +10,14 @@ public class Calc {
         if (!exp.contains(" ")) {
             return Integer.parseInt(exp);
         }
+        exp = exp.replace("- ", "+ -");
 
         boolean needToMulti = exp.contains("*");
         boolean needToPlus = exp.contains("+");
 
         boolean needToCompound = needToPlus && needToMulti;
 
-        exp = exp.replace("- ", "+ -");
+
 
         if (needToCompound) {
             String[] bits = exp.split(" \\+ ");
@@ -25,32 +26,6 @@ public class Calc {
                     .mapToInt(Calc::run)
                     .mapToObj(e -> e + "")
                     .collect(Collectors.joining(" + "));
-//1
-//            StringBuilder sb = new StringBuilder();
-//
-//            for (int i = 0; i < bits.length; i++) {
-//                int result = Calc.run(bits[i]);
-//                sb.append(result);
-//
-//                // 마지막 요소가 아니면 " + " 추가
-//                if (i < bits.length - 1) {
-//                    sb.append(" + ");
-//                }
-//            }
-//
-//            String newExp = sb.toString();
-
-//2
-//            String newExp = "";
-//
-//            for (int i = 0; i < bits.length; i++) {
-//                int result = Calc.run(bits[i]);
-//                newExp += result;
-//
-//                if (i < bits.length - 1) {
-//                    newExp += " + ";
-//                }
-//            }
 
             return run(newExp);
         }
