@@ -74,8 +74,45 @@ public class CalcTest {
     }
 
     @Test
-    @DisplayName("10 * 10 * 10 == 1000")
+    @DisplayName("10 - 10 - 10 - 10 == -20")
     public void test12() {
+        assertThat(Calc.run("10 - 10 - 10 - 10")).isEqualTo(-20);
+    }
+
+    @Test
+    @DisplayName("10 + 20 + 30 - 10 + 60 == 110")
+    public void test13() {
+        assertThat(Calc.run("10 + 20 + 30 - 10 + 60")).isEqualTo(110);
+    }
+
+    @Test
+    @DisplayName("10 * 10 == 100")
+    public void test14() {
+        assertThat(Calc.run("10 * 10")).isEqualTo(100);
+    }
+
+    @Test
+    @DisplayName("10 * 10 * 10 == 1000")
+    public void test15() {
         assertThat(Calc.run("10 * 10 * 10")).isEqualTo(1000);
     }
+
+    @Test
+    @DisplayName("10 + 5 * 2 == 20")
+    public void test16() {
+        assertThat(Calc.run("10 + 5 * 2")).isEqualTo(20);
+    }
+
+    @Test
+    @DisplayName("20 + 10 + 5 * 2 == 40")
+    public void test17() {
+        assertThat(Calc.run("20 + 10 + 5 * 2")).isEqualTo(40);
+    }
+
+    @Test
+    @DisplayName("10 * 20 + 10 + 5 * 2 == 220")
+    public void test18() {
+        assertThat(Calc.run("10 * 20 + 10 + 5 * 2")).isEqualTo(220);
+    }
+
 }
